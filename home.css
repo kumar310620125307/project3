@@ -1,0 +1,420 @@
+body{
+margin: 0;
+padding: 0px;
+box-sizing: border-box;
+background-size: 100% 100%;
+}
+
+body {
+ background: linear-gradient(135deg, #2a160f, #120a06);
+}
+.card {
+  background: linear-gradient(135deg, #f12711, #f5af19);
+}
+
+.scene {
+  position: fixed;
+  inset: 0;
+  perspective: 1100px;
+  overflow: hidden;
+  z-index: -2;
+}
+
+.fall {
+  position: absolute;
+  top: -200px;
+  width: 80px;
+  transform-style: preserve-3d;
+   perspective: 1100px;
+  animation: drop linear infinite;
+  opacity: 0;
+  filter: blur(var(--blur));
+}
+
+@keyframes drop {
+  0% {
+    transform:
+      translateY(-200px)
+      translateZ(var(--z))
+      scale(var(--scale))
+      rotateX(0deg)
+      rotateY(0deg);
+    opacity: 0;
+  }
+  20% { opacity: 0.7; }
+  100% {
+    transform:
+      translateY(120vh)
+      translateZ(var(--z))
+      scale(var(--scale))
+       rotatez(-60deg)
+      rotatez(360deg);
+    opacity: 0.1;
+  }
+}
+
+
+.i1  { left: 5%;  --z: 100px;  --scale: 2.2; --blur: 0px; animation-duration: 5s; }
+.i2  { left: 12%; --z: 50px;   --scale: 1.1; --blur: 0.7px; animation-duration: 6s; }
+.i3  { left: 18%; --z: 0px;    --scale: 1;   --blur: 0.3px; animation-duration: 7s; }
+
+.i4  { left: 25%; --z: -80px;  --scale: 0.9; --blur: 2px; animation-duration: 8s; }
+.i5  { left: 32%; --z: -150px; --scale: 0.8; --blur: 3px; animation-duration: 9s; }
+
+.i6  { left: 38%; --z: 80px;   --scale: 1.15; --blur: 0px; animation-duration: 7.5s; }
+.i7  { left: 45%; --z: -200px; --scale: 0.75; --blur: 3.5px; animation-duration: 10s; }
+
+.i8  { left: 52%; --z: -50px;  --scale: 0.95; --blur: 1.5px; animation-duration: 7.5s; }
+.i9  { left: 78%; --z: 120px;  --scale: 1.25; --blur: 0px; animation-duration: 5s; }
+
+.i10 { left: 95%; --z: -250px; --scale: 0.7; --blur: 4px; animation-duration: 11s; }
+
+
+.banner {
+  margin-bottom: 30px;
+  height: 100vh;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('./image/valentin-petrov-m-mal-01.jpg');
+  background-size: cover;
+  animation: bgZoomIn 3s ease-in 1 forwards;
+  z-index: -1;
+}
+
+.banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('./image/after.png');
+  background-size: cover;
+  background-position: top;
+  transform: scale(2);
+  animation: bgZoomOut 3s ease-in-out 1 forwards;
+  z-index: 1;
+}
+
+ @keyframes bgZoomIn {
+  from {
+    transform: scale(1.5);
+  } to {
+    transform: scale(1);
+  }
+}
+@keyframes bgZoomOut {
+  from {
+    transform: scale(1);
+  } to {
+    transform: scale(2);
+  }
+} 
+
+svg path {
+fill: transparent;
+stroke: #ffffff;
+stroke-width: 0.1;  
+stroke-dasharray:140;
+stroke-dashoffset: 140;
+animation: textAnimation 4s ease-in 1 forwards;
+
+}
+ @keyframes textAnimation {
+  0% {
+    stroke-dashoffset: 140;
+  }
+  80% {
+    fill: transparent;
+  }
+  100% {
+    fill: #fff;
+    stroke-dashoffset: 0;
+  }
+} 
+
+
+.pyramid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+a{
+  text-decoration: none;
+}
+.row {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+
+.card {
+  width: 300px;
+  height: 300px;
+  
+  border-radius: 18px;
+  color: #010101;
+  text-align: center;
+  padding-top: 10px;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  z-index: 1;
+}
+
+.main-img {
+  height: 70%;
+  width: 90%;
+  object-fit: cover;
+  /* padding: 10px; */
+    transition: all 0.6s ease;
+    border-radius:10px;
+}
+.main-img:hover{
+ filter: blur(5px);
+}
+.card-title {
+  height: 10%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  padding-left: 10px;
+    font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color:#1F2A44;
+}
+.card-desc {
+  height: 15%;
+  margin: 0;
+  padding: 0 ;
+  font-size: 18px;
+  color: #4E342E;
+  text-align: center;
+  font-family: "Edu SA Beginner", cursive;
+  font-optical-sizing: auto;
+  font-weight:500;
+  
+}
+
+
+
+.blast-item {
+  position: absolute;
+  width: 70px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.2);
+  opacity: 0;
+  transition: all 0.6s ease;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.blast-card:hover .item-1 {
+  transform: translate(-170px, -70px) rotate(-20deg) scale(1);
+  opacity: 1;
+}
+.blast-card:hover .item-2 {
+  transform: translate(-35px, -10px) rotate(0deg) scale(1);
+  opacity: 1;
+}
+.blast-card:hover .item-3 {
+  transform: translate(90px, -70px) rotate(25deg) scale(1);
+  opacity: 1;
+}
+.blast-card:hover .item-4 {
+  transform: translate(-35px, -140px) rotate(0deg) scale(2.5);
+  opacity: 1;
+}
+.blast-card:hover {
+  transform: scale(1.03);
+}
+
+.wave-footer{
+    margin-top: 20px;
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-content{
+    position: relative;
+    z-index: 5; 
+    text-align: center;
+    color: rgb(23, 161, 113);
+}
+
+.footer-content h2{
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+}
+
+.footer-content p{
+    margin-top: 8px;
+    opacity: 0.8;
+}
+
+.wave{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 200%;
+    height: 100%;
+    z-index: 1;
+}
+
+.wave{
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    width: 200%;
+    height: 500px;
+    background: #92f2fe;
+    animation: waveMove 8s linear infinite;
+    clip-path: polygon(
+        0% 55%, 10% 60%, 20% 55%, 30% 60%,
+        40% 55%, 50% 60%, 60% 55%, 70% 60%,
+        80% 55%, 90% 60%, 100% 55%,
+        100% 100%, 0% 100%
+    );
+}
+
+.wave2{
+  animation: waveMove 6s linear infinite;
+    background: rgba(124, 225, 238, 0.5);
+    animation-duration: 12s;
+    clip-path: polygon(
+        0% 60%, 10% 55%, 20% 60%, 30% 55%,
+        40% 60%, 50% 55%, 60% 60%, 70% 55%,
+        80% 60%, 90% 55%, 100% 60%,
+        100% 100%, 0% 100%
+    );
+}
+
+
+@keyframes waveMove{
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-50%);
+    }
+}
+@media (max-width: 1200px) and (min-width: 601px) {
+  .banner {
+    height: 100vh; 
+    padding: 20px;
+  }
+
+  .banner svg {
+    width: 90%; 
+    height: auto;
+   
+  }
+  .banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('./image/after.png');
+  background-size: cover;
+  background-position: top;
+  transform: scale(2);
+  animation: bgZoomOut 3s ease-in-out 1 forwards;
+  z-index: 1;
+} 
+@keyframes bgZoomOut {
+  from {
+    transform: scale(1);
+  } to {
+    transform: scale(2.5);
+  }
+}
+
+  .row {
+    flex-wrap: wrap;
+    gap: 20px; 
+    justify-content: center;
+  }
+
+  .card {
+    width: 200px; 
+    height: 200px; 
+    padding-top: 20px; 
+  }
+
+  .main-img {
+    width: 90%;
+    height: 65%;
+  }
+
+  .card-title {
+    font-size: 24px;
+  }
+
+  .card-desc {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  
+  .banner {
+    height: 100vh;
+    padding: 10px;
+  }
+
+  .banner svg {
+    width: 90%;
+    height: auto;
+    z-index: 999;
+  }
+
+  .banner::before,
+  .banner::after {
+    background-size: cover; 
+    z-index: -1;
+  }
+
+  .row {
+    flex-direction: column;
+    /* gap: 40px;  */
+    align-items: center;
+  }
+
+  .card {
+    width: 300px;      
+    height: 200px;  
+    padding-top: 20px; 
+    margin-bottom: 20px;
+  }
+
+  .card-title {
+    font-size: 16px;
+  }
+
+  .card-desc {
+    font-size: 12px;
+    padding: 0 10px;
+  }
+
+  .main-img {
+    height: 65%;
+    width: 85%;
+  }
+}
+
