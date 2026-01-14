@@ -137,14 +137,7 @@ a {
   height: 100%;
   z-index: -1;
  box-shadow: 20px 50px 20px 1px rgba(0,0,0,0.8);
-<<<<<<< HEAD
 background: linear-gradient(135deg, #56ab2f, #a8e063);
-
-=======
- background-image: url(./milkdrinkimage/monte.jpg) ;
- background-repeat:no-repeat ;
- background-size: 100% ;
->>>>>>> 1e62f1e0713933ec02f24d35c680e4fec3ba15d8
 }
 
 
